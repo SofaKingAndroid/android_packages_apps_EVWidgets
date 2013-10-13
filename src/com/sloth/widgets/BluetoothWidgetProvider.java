@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 The Evervolv Project
+ * Copyright (C) 2012 The sloth Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.evervolv.widgets;
+package com.sloth.widgets;
 
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -27,15 +27,15 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.RemoteViews;
 
-import com.evervolv.widgets.R;
+import com.sloth.widgets.R;
 
 public class BluetoothWidgetProvider extends AppWidgetProvider {
     // TAG
-    public static final String TAG = "Evervolv_BTWidget";
+    public static final String TAG = "sloth_BTWidget";
     private boolean DBG = false;
     // Intent Actions
     public static String BLUETOOTH_STATE_CHANGED = "android.bluetooth.adapter.action.STATE_CHANGED";
-    public static String BLUETOOTH_CHANGED = "com.evervolv.widgets.BLUETOOTH_CLICKED";
+    public static String BLUETOOTH_CHANGED = "com.sloth.widgets.BLUETOOTH_CLICKED";
 
     private static final StateTracker sBluetoothState = new BluetoothStateTracker();
 

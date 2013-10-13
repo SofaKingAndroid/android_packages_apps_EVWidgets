@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 The Evervolv Project
+ * Copyright (C) 2012 The sloth Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.evervolv.widgets;
+package com.sloth.widgets;
 
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -34,15 +34,15 @@ import android.util.Log;
 import android.view.IWindowManager;
 import android.widget.RemoteViews;
 
-import com.evervolv.widgets.R;
+import com.sloth.widgets.R;
 
 public class AutoRotateWidgetProvider  extends AppWidgetProvider {
 
     // TAG
-    public static final String TAG = "Evervolv_AutoRotateWidget";
+    public static final String TAG = "sloth_AutoRotateWidget";
     private boolean DBG = false;
     // Intent Actions
-    public static String AUTOROTATE_CHANGED = "com.evervolv.widgets.ORIENTATION_CLICKED";
+    public static String AUTOROTATE_CHANGED = "com.sloth.widgets.ORIENTATION_CLICKED";
 
     private Context mContext;
     private WidgetSettingsObserver mObserver = null;

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 The Evervolv Project
+ * Copyright (C) 2012 The sloth Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.evervolv.widgets;
+package com.sloth.widgets;
 
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -27,15 +27,15 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.RemoteViews;
 
-import com.evervolv.widgets.R;
+import com.sloth.widgets.R;
 
 public class WifiApWidgetProvider extends AppWidgetProvider {
     // TAG
-    public static final String TAG = "Evervolv_WifiApWidget";
+    public static final String TAG = "sloth_WifiApWidget";
     private boolean DBG = false;
     // Intent Actions
     public static String WIFIAP_STATE_CHANGED = "android.net.wifi.WIFI_AP_STATE_CHANGED";
-    public static String WIFIAP_CHANGED = "com.evervolv.widgets.WIFIAP_CLICKED";
+    public static String WIFIAP_CHANGED = "com.sloth.widgets.WIFIAP_CLICKED";
 
     private static final StateTracker sWifiApState = new WifiApStateTracker();
 

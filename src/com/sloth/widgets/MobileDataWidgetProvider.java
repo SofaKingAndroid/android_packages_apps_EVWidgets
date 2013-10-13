@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 The Evervolv Project
+ * Copyright (C) 2012 The sloth Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.evervolv.widgets;
+package com.sloth.widgets;
 
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -22,19 +22,20 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.provider.Settings;
+import android.net.ConnectivityManager;
+import android.net.wifi.WifiManager;
 import android.util.Log;
 import android.widget.RemoteViews;
 
-import com.evervolv.widgets.R;
+import com.sloth.widgets.R;
 
-public class AirplaneModeWidgetProvider extends AppWidgetProvider {
-
+public class MobileDataWidgetProvider extends AppWidgetProvider {
     // TAG
-    public static final String TAG = "Evervolv_AirplaneModeWidget";
-    private boolean DBG = false;
+    public static final String TAG = "sloth_MobileDataWidget";
+    private boolean DBG = true;
     // Intent Actions
-    public static String AIRPLANEMODE_CHANGED = "com.evervolv.widgets.AIRPLANEMODE_CLICKED";
+    public static String MOBILE_DATA_STATE_CHANGED = "com.android.internal.telephony.MOBILE_DATA_CHANGED";
+    public static String MOBILE_DATA_CHANGED = "com.sloth.widgets.MOBILE_DATA_CLICKED";
 
     @Override
     public void onUpdate(Context context,
@@ -46,20 +47,18 @@ public class AirplaneModeWidgetProvider extends AppWidgetProvider {
     }
 
     /**
-	* this method will receive all Intents that it registers for in
+	* this method will receive all Intents that it register fors in
 	* the android manifest file.
 	*/
     @Override
     public void onReceive(Context context, Intent intent){
     	if (DBG) Log.d(TAG, "onReceive - " + intent.toString());
     	super.onReceive(context, intent);
-
-    	if (AIRPLANEMODE_CHANGED.equals(intent.getAction())){
+    	if (MOBILE_DATA_CHANGED.equals(intent.getAction())){
     		toggleState(context);
-    	}
-    	if (Intent.ACTION_AIRPLANE_MODE_CHANGED.equals(intent.getAction())) {
-			int airplanemodeState = getAirplaneModeState(context) ? 1 : 0;
-    		updateWidgetView(context,airplanemodeState);
+
+        	int dataState = getDataState(context) ? StateTracker.STATE_ENABLED : StateTracker.STATE_DISABLED;
+            updateWidgetView(context,dataState);
     	}
     }
 
@@ -74,9 +73,8 @@ public class AirplaneModeWidgetProvider extends AppWidgetProvider {
 
 	    	int appWidgetId = appWidgetIds[i];
 
-	    	//on or off
-			int airplanemodeState = getAirplaneModeState(context) ? 1 : 0;
-    		updateWidgetView(context,airplanemodeState);
+			int dataState = getDataState(context) ? StateTracker.STATE_ENABLED : StateTracker.STATE_DISABLED;
+    		updateWidgetView(context,dataState);
 		}
     }
 
@@ -86,19 +84,21 @@ public class AirplaneModeWidgetProvider extends AppWidgetProvider {
 	private void updateWidgetView(Context context,int state){
 
 	    Intent intent = new Intent(context, getClass());
-		intent.setAction(AIRPLANEMODE_CHANGED);
+		intent.setAction(MOBILE_DATA_CHANGED);
 	    PendingIntent pendingIntent = PendingIntent.getBroadcast(context,0,intent,0);
 	    RemoteViews views = new RemoteViews(context.getPackageName(),
 						R.layout.power_widget);
         views.setOnClickPendingIntent(R.id.widget_mask,pendingIntent);
 
-        views.setImageViewResource(R.id.widget_icon, R.drawable.widget_airplane_icon);
+        views.setImageViewResource(R.id.widget_icon, R.drawable.widget_mobile_data_icon);
         // We need to update the Widget GUI
         if (state == StateTracker.STATE_DISABLED){
             views.setImageViewResource(R.id.widget_indic, 0);
         } else if (state == StateTracker.STATE_ENABLED) {
             views.setImageViewResource(R.id.widget_indic,R
                     .drawable.widget_indic_on);
+        } else if (state == StateTracker.STATE_UNKNOWN) {
+            views.setImageViewResource(R.id.widget_indic, 0);
         }
 
 		ComponentName cn = new ComponentName(context, getClass());
@@ -106,29 +106,36 @@ public class AirplaneModeWidgetProvider extends AppWidgetProvider {
 	}
 
     /**
-     * Gets the state of Airplane.
+     * Gets the state of data
      *
-     * @param context
      * @return true if enabled.
      */
-    private static boolean getAirplaneModeState(Context context) {
-        return Settings.Global.getInt(context.getContentResolver(),
-                Settings.Global.AIRPLANE_MODE_ON, 0) == 1;
+    private static boolean getDataState(Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        try {
+            /* Make sure the state change propagates */
+            Thread.sleep(100);
+        } catch (java.lang.InterruptedException ie) {
+        }
+        return cm.getMobileDataEnabled();
     }
 
     /**
-     * Toggles the state of Airplane
-     *
-     * @param context
+     * Toggles the state of data.
      */
     public void toggleState(Context context) {
-        boolean state = getAirplaneModeState(context);
-        Settings.Global.putInt(context.getContentResolver(), Settings.Global.AIRPLANE_MODE_ON,
-                state ? 0 : 1);
-        // notify change
-        Intent intent = new Intent(Intent.ACTION_AIRPLANE_MODE_CHANGED);
-        intent.putExtra("state", state);
-        context.sendBroadcast(intent);
+        boolean enabled = getDataState(context);
+
+        ConnectivityManager cm = (ConnectivityManager) context
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        if (enabled) {
+            cm.setMobileDataEnabled(false);
+        } else {
+        	cm.setMobileDataEnabled(true);
+
+        }
     }
 
 }

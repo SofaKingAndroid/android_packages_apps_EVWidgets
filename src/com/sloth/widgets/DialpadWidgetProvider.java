@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 The Evervolv Project
+ * Copyright (C) 2012 The sloth Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.evervolv.widgets;
+package com.sloth.widgets;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -29,25 +29,25 @@ import android.net.Uri;
 import android.util.Log;
 import android.widget.RemoteViews;
 
-import com.evervolv.widgets.R;
+import com.sloth.widgets.R;
 
 public class DialpadWidgetProvider extends AppWidgetProvider {
     private static final String TAG = "PhoneWidgetProvider";
 
-    public static String DIALPAD_ONE     = "com.evervolv.widgets.DIALPAD_ONE";
-    public static String DIALPAD_TWO     = "com.evervolv.widgets.DIALPAD_TWO";
-    public static String DIALPAD_THREE   = "com.evervolv.widgets.DIALPAD_THREE";
-    public static String DIALPAD_FOUR    = "com.evervolv.widgets.DIALPAD_FOUR";
-    public static String DIALPAD_FIVE    = "com.evervolv.widgets.DIALPAD_FIVE";
-    public static String DIALPAD_SIX     = "com.evervolv.widgets.DIALPAD_SIX";
-    public static String DIALPAD_SEVEN   = "com.evervolv.widgets.DIALPAD_SEVEN";
-    public static String DIALPAD_EIGHT   = "com.evervolv.widgets.DIALPAD_EIGHT";
-    public static String DIALPAD_NINE    = "com.evervolv.widgets.DIALPAD_NINE";
-    public static String DIALPAD_ZERO    = "com.evervolv.widgets.DIALPAD_ZERO";
-    public static String DIALPAD_STAR    = "com.evervolv.widgets.DIALPAD_STAR";
-    public static String DIALPAD_HASH    = "com.evervolv.widgets.DIALPAD_HASH";
-    public static String DIALPAD_DELETE  = "com.evervolv.widgets.DIALPAD_DELETE";
-    public static String DIALPAD_DIAL    = "com.evervolv.widgets.DIALPAD_DIAL";
+    public static String DIALPAD_ONE     = "com.sloth.widgets.DIALPAD_ONE";
+    public static String DIALPAD_TWO     = "com.sloth.widgets.DIALPAD_TWO";
+    public static String DIALPAD_THREE   = "com.sloth.widgets.DIALPAD_THREE";
+    public static String DIALPAD_FOUR    = "com.sloth.widgets.DIALPAD_FOUR";
+    public static String DIALPAD_FIVE    = "com.sloth.widgets.DIALPAD_FIVE";
+    public static String DIALPAD_SIX     = "com.sloth.widgets.DIALPAD_SIX";
+    public static String DIALPAD_SEVEN   = "com.sloth.widgets.DIALPAD_SEVEN";
+    public static String DIALPAD_EIGHT   = "com.sloth.widgets.DIALPAD_EIGHT";
+    public static String DIALPAD_NINE    = "com.sloth.widgets.DIALPAD_NINE";
+    public static String DIALPAD_ZERO    = "com.sloth.widgets.DIALPAD_ZERO";
+    public static String DIALPAD_STAR    = "com.sloth.widgets.DIALPAD_STAR";
+    public static String DIALPAD_HASH    = "com.sloth.widgets.DIALPAD_HASH";
+    public static String DIALPAD_DELETE  = "com.sloth.widgets.DIALPAD_DELETE";
+    public static String DIALPAD_DIAL    = "com.sloth.widgets.DIALPAD_DIAL";
 
     public static String mCurrentNumber = "";
 

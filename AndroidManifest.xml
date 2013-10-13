@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.evervolv.widgets"
+    package="com.sloth.widgets"
     android:sharedUserId="android.uid.system"
     android:versionCode="1"
     android:versionName="1.0"
@@ -35,7 +35,7 @@
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
-                <action android:name="com.evervolv.widgets.WIFI_CLICKED"/>
+                <action android:name="com.sloth.widgets.WIFI_CLICKED"/>
             </intent-filter>
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_wifi_info" />
         </receiver>
@@ -45,7 +45,7 @@
                 android:icon="@drawable/icon_sync">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="com.evervolv.widgets.SYNC_CLICKED"/>
+                <action android:name="com.sloth.widgets.SYNC_CLICKED"/>
                  <action android:name="com.android.sync.SYNC_CONN_STATUS_CHANGED" />
             </intent-filter>
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_sync_info" />
@@ -57,7 +57,7 @@
                 android:icon="@drawable/icon_mobile_data">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="com.evervolv.widgets.MOBILE_DATA_CLICKED"/>
+                <action android:name="com.sloth.widgets.MOBILE_DATA_CLICKED"/>
             </intent-filter>
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_mobile_data_info" />
         </receiver>
@@ -67,7 +67,7 @@
                 android:icon="@drawable/icon_auto_rotate">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="com.evervolv.widgets.AUTOROTATE_CLICKED"/>
+                <action android:name="com.sloth.widgets.AUTOROTATE_CLICKED"/>
             </intent-filter>
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_auto_rotate_info" />
         </receiver>
@@ -78,7 +78,7 @@
                 android:icon="@drawable/icon_gps">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="com.evervolv.widgets.GPS_CLICKED"/>
+                <action android:name="com.sloth.widgets.GPS_CLICKED"/>
                 <action android:name="android.location.PROVIDERS_CHANGED" />
             </intent-filter>
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_gps_info" />
@@ -90,7 +90,7 @@
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="android.net.wifi.WIFI_AP_STATE_CHANGED" />
-                <action android:name="com.evervolv.widgets.WIFIAP_CLICKED"/>
+                <action android:name="com.sloth.widgets.WIFIAP_CLICKED"/>
             </intent-filter>
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_wifiap_info" />
         </receiver>
@@ -100,7 +100,7 @@
                 android:icon="@drawable/icon_airplane">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="com.evervolv.widget.AIRPLANEMODE_CLICKED"/>
+                <action android:name="com.sloth.widget.AIRPLANEMODE_CLICKED"/>
                 <action android:name="android.intent.action.AIRPLANE_MODE"/>
 
             </intent-filter>
@@ -114,7 +114,7 @@
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="android.bluetooth.adapter.action.STATE_CHANGED" />
-                <action android:name="com.evervolv.widgets.BLUETOOTH_CLICKED"/>
+                <action android:name="com.sloth.widgets.BLUETOOTH_CLICKED"/>
             </intent-filter>
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_bluetooth_info"/>
         </receiver>
@@ -127,29 +127,29 @@
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="android.net.fourG.NET_4G_STATE_CHANGED" />
                 <action android:name="com.htc.net.wimax.WIMAX_ENABLED_CHANGED" />
-                <action android:name="com.evervolv.widgets.WIMAX_CLICKED"/>
+                <action android:name="com.sloth.widgets.WIMAX_CLICKED"/>
             </intent-filter>
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_wimax_info"/>
         </receiver>
         <!-- Dialpad widget -->
-        <receiver android:name="com.evervolv.widgets.DialpadWidgetProvider"
+        <receiver android:name="com.sloth.widgets.DialpadWidgetProvider"
                 android:label="@string/phone_lock_title"
                 android:enabled="@bool/config_hasTelephony">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="com.evervolv.widgets.DIALPAD_ONE" />
-                <action android:name="com.evervolv.widgets.DIALPAD_TWO" />
-                <action android:name="com.evervolv.widgets.DIALPAD_THREE" />
-                <action android:name="com.evervolv.widgets.DIALPAD_FOUR" />
-                <action android:name="com.evervolv.widgets.DIALPAD_FIVE" />
-                <action android:name="com.evervolv.widgets.DIALPAD_SIX" />
-                <action android:name="com.evervolv.widgets.DIALPAD_SEVEN" />
-                <action android:name="com.evervolv.widgets.DIALPAD_EIGHT" />
-                <action android:name="com.evervolv.widgets.DIALPAD_NINE" />
-                <action android:name="com.evervolv.widgets.DIALPAD_ZERO" />
-                <action android:name="com.evervolv.widgets.DIALPAD_STAR" />
-                <action android:name="com.evervolv.widgets.DIALPAD_HASH" />
-                <action android:name="com.evervolv.widgets.DIALPAD_DELETE" />
+                <action android:name="com.sloth.widgets.DIALPAD_ONE" />
+                <action android:name="com.sloth.widgets.DIALPAD_TWO" />
+                <action android:name="com.sloth.widgets.DIALPAD_THREE" />
+                <action android:name="com.sloth.widgets.DIALPAD_FOUR" />
+                <action android:name="com.sloth.widgets.DIALPAD_FIVE" />
+                <action android:name="com.sloth.widgets.DIALPAD_SIX" />
+                <action android:name="com.sloth.widgets.DIALPAD_SEVEN" />
+                <action android:name="com.sloth.widgets.DIALPAD_EIGHT" />
+                <action android:name="com.sloth.widgets.DIALPAD_NINE" />
+                <action android:name="com.sloth.widgets.DIALPAD_ZERO" />
+                <action android:name="com.sloth.widgets.DIALPAD_STAR" />
+                <action android:name="com.sloth.widgets.DIALPAD_HASH" />
+                <action android:name="com.sloth.widgets.DIALPAD_DELETE" />
             </intent-filter>
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_lock_phone" />
         </receiver>
